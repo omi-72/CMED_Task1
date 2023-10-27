@@ -76,10 +76,6 @@ class RunningApp : Application() {
                     while (input.read(data).also { count = it } != -1) {
                         total += count
                         output.write(data, 0, count)
-
-                        val progress = ((total.toFloat() / connection.contentLength) * 100).toInt()
-                        notificationBuilder.setProgress(100, progress, false)
-                        notificationManager.notify(notificationId, notificationBuilder.build())
                     }
 
                     output.flush()
